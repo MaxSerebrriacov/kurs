@@ -1,0 +1,20 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto ens192
+iface ens192 inet dhcp
+hostname localhost
+post-up /bin/sh /root/restoreiptables.sh
+#Extend interface port1
+auto ens34 
+iface ens34 inet static
+address 172.16.0.1/24
+

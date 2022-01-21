@@ -1,0 +1,320 @@
+\q
+\q
+create database Videoteka;
+\q
+/c videoteka/dt
+\c videoteka
+\q
+drop database videoteka;
+\q
+\l
+\dt
+connectvideoteka;
+connect to videoteka;
+connect database videoteka;
+connect postgres database videoteka;
+\dt
+drop database postgres;
+\c videoteka
+\dt
+drop database postgres;
+create database postgres;
+\q
+\dt
+\q
+select * from pg_extensions;
+select * from pg_extension;
+create extension file_fdw;
+\q
+create extension file_fdw;
+\q
+create extension file_fdw;
+shutdown
+\q
+create extension file_fdw;
+\q
+create extension file_fdw;
+\q
+create extension file_fdw;
+create server pglog foreign data wrapper file_fdw;
+/d
+\d
+\l
+\dt
+\e
+/d
+\q
+/dx
+\dx
+\q
+create role vid with login password 'password';
+\q
+/dx
+\dx
+\q
+\dx
+\setenv PAGER 'pspg -s 7'
+\pset border 2
+\l
+\q
+\l
+\l:
+\l;
+\q
+\l
+\dx
+\q
+create extension freespacemap;
+\q
+create extension pg_freespacemap;
+\q
+\dx
+\q
+\dx
+\q
+\dt
+\q
+insert into actors(FIO) values ('Aleksey Borisovich Heromen');
+select * from actors;
+\q
+\d
+\dt
+\dt actors 
+\q
+\c videoteka
+\c videoteca
+\du
+\dt
+\d
+\dt
+\q
+\d
+\d
+\dt
+select * from actors;
+select * from command;
+select * from roles;
+select * from actors;
+select * from roles;
+select * from command;
+select * from actors;
+select * from command;
+select * from roles ;
+select * from command;
+select * from producers;
+\q
+select * from producers;
+\c postgres
+drop database videoteka;
+create database videoteka;
+\q
+\dt
+select * from producers;
+select * from industry;
+select * from command;
+select * from videotape;
+select * from premies;
+select * from videotape_premies;
+select * from videotape;
+\c postgres
+drop database videoteka ;
+create database videoteka ;
+\q
+\dt
+select * from actors limit 5;
+select * from actors command 5;
+select * from actors limit 5;
+select * from actors command limit 5;
+select * from actors industry limit 5;
+select * from industry limit 5;
+select * from actors limit 5;
+select * from command limit 5;
+\dt
+select * from premies limit 5;
+select * from producers limit 5;
+select * from roles limit 5;
+select * from videotape;
+\
+\q
+ls
+\dt
+\q
+\c postgres
+drop database videoteka ;
+create database videoteka ;
+\q
+\dt
+\q
+drop database videoteka ;
+create database videoteka ;
+create database videoteka;
+\q
+drop database videoteka ;
+create database videoteka;
+\q
+\dt
+select r.FIO s.FIO from authors as r, producers as s;
+select r.FIO, s.FIO from authors as r, producers as s;
+select union distinct r.FIO, s.FIO from authors as r, producers as s;
+select distinct r.FIO, s.FIO from authors as r, producers as s;
+select distinct r.FIO, s.FIO from authors as r union producers as s;
+select distinct FIO from authors;
+select distinct FIO, 'Auth' from authors union select FIO, 'Prod' from producers;
+select distinct FIO, 'Auth' as role from authors union select FIO, 'Prod' from producers;
+select distinct FIO, 'Auth' as role from authors union select FIO, 'Prod' from producers;
+\dt
+\dt authors 
+select * from authors;
+select distinct FIO, 'Auth' as role from authors where "id" in (select author_id from videotape where "id" in (select videotape_id from videotape_premies));
+select author_id from videotape where videotape_id in (select videotape_id from videotape_premies);
+select author_id from videotape where id in (select videotape_id from videotape_premies);
+select * from videotape where author_id = 1 ;
+\dt
+select *, videotape_id  from videotape, videotape_premies where author_id = 1 ;
+select distinct *, videotape_id  from videotape, videotape_premies where author_id = 1 ;
+select distinct * from videotape, videotape_premies where author_id = 1 ;
+select distinct * from videotape where author_id = 1 ;
+select distinct * from videotape where author_id = 1 and id in (select videotape_id from videotape_premies);
+select distinct * from videotape where author_id = 2 ;
+select distinct * from videotape where author_id = 2and id in (select videotape_id from videotape_premies);
+select distinct * from videotape where author_id = 2 ;
+select distinct * from videotape where id in (select videotape_id from videotape_premies);
+\q
+\dt
+\q
+\df
+select * from selectscenprem();
+\q
+\dt
+select count(*) from authors;
+select distinct * from videotape where author_id = 2;
+select distinct * from videotape where id in (select videotape_id from videotape_premies);
+\dt
+\df
+select * from selectscenprem;
+select * from selectscenprem();
+select * from authors;
+select * from selectscenprem();
+select * from videotape;
+select * from producers;
+\dx
+\df
+select * from selectscenproc();
+\df
+select * from selectscenproc();
+select * from selectscenprem();
+select * , 'Author' from selectscenprem() union select * , 'Producer' from selectscenproc();
+select * , 'Author' as Role from selectscenprem() union select * , 'Producer' from selectscenproc();
+\df
+select * , 'Author' as Role from selectscenprem() union select * , 'Producer' from selectscenproc();
+select * from videotape;
+select prodeccer_id , author_id from videotape;
+select prodeccer_id , author_id from videotape group by author_id;
+select prodeccer_id , author_id from videotape order by author_id;
+select prodeccer_id ,count(author_id) from videotape  order by author_id;
+select prodeccer_id ,count(author_id) from videotape  order by prodeccer_id;
+select prodeccer_id ,count(author_id) from videotape;
+select prodeccer_id ,count(author_id) from videotape group by author_id;
+select prodeccer_id ,count(author_id) from videotape group by prodeccer_id;
+select prodeccer_id ,count(author_id) as a from videotape where a>1  group by prodeccer_id;
+select prodeccer_id ,count(author_id) from videotape where count(author_id)>1 group by prodeccer_id;
+select prodeccer_id from videotape where count(author_id)>1 group by prodeccer_id;
+select prodeccer_id ,count(author_id) as a from videotape where a>1  group by prodeccer_id;
+select prodeccer_id ,count(author_id) from videotape group by prodeccer_id;
+select fio from producers where id in  (select prodeccer_id ,count(author_id) from videotape group by prodeccer_id);
+select fio from producers where id in (select prodeccer_id ,count(author_id) from videotape group by prodeccer_id);
+select fio from producers where id = (select prodeccer_id ,count(author_id) from videotape group by prodeccer_id);
+select fio from producers where id IN (select prodeccer_id ,count(author_id) from videotape group by prodeccer_id);
+select fio from producers where id in (select prodeccer_id from videotape where count(author_id)>1  group by prodeccer_id);
+select fio from producers where id in (select prodeccer_id from videotape group by prodeccer_id);
+select fio from producers where id in (select prodeccer_id from videotape group by prodeccer_id having count(author_id)>1);
+select prodeccer_id ,count(author_id) from videotape group by prodeccer_id;
+select fio from producers where id in (select prodeccer_id from videotape group by prodeccer_id having count(author_id)>1);
+select * from videotape;
+select * from videotape where prodeccer_id = 1 and year_created::INT > 2020;
+\c postgres
+drop database videoteka;
+create database videoteka;
+\q
+select * from premies;
+\q
+drop database videoteka;
+create database videoteka;
+drop database videoteka;
+create database videoteka;
+\c videoteka 
+\dt
+select * from videotape where id = (select videotape_id from videotape_premies where premie_id = (select id from premies where year_completed::int = 2002));
+select * from videotape where id = (select videotape_id from videotape_premies where premie_id = (select id from premies where year_completed::int = 2002 limit 1));
+select * from videotape where id = (select videotape_id from videotape_premies where premie_id = (select id from premies where year_completed::int = 2002)) limit 1;
+select * from videotape where id = (select videotape_id from videotape_premies where premie_id = (select id from premies where year_completed::int = 2002 )limit 1);
+\dt
+select * from industry where id = (select industry_id from videotape where prodeccer_id =1);
+select * from industry where id in (select industry_id from videotape where prodeccer_id =1);
+select * from industry;
+\q
+\c videoteka 
+\dt
+\q
+create database lab20;
+/c lab20
+\c lab20
+create table rand(x int);
+create table rand(x int);
+create user "user" with superuser login;
+\q
+select * from pg_tablespace join pg_user = spcowner;
+select * from pg_tablespace join (pg_user = spcowner);
+select * from pg_tablespace join pg_user on usesysid = spcowner;
+select oid, spcname, username from pg_tablespace join pg_user on usesysid = spcowner;
+select oid, spcname, usename from pg_tablespace join pg_user on usesysid = spcowner;
+\c postgres
+alter database lab20 owner to "user";
+\q
+select oid, spcname, usename from pg_tablespace join pg_user on usesysid = spcowner;
+\q
+\q
+create tablespace owner "user" location = '/home/postgres/tablespace/freespace/lab20';
+create tablespace owner user location = '/home/postgres/tablespace/freespace/lab20';
+create tablespace lab20 owner "user" location = '/home/postgres/tablespace/freespace/lab20';
+create tablespace lab20 owner "user" location '/home/postgres/tablespace/freespace/lab20';
+\q
+create tablespace lab20sshfs owner "user" location '/home/postgres/tablespace/sshfs/lab20';
+create tablespace lab20sshfs owner "user" location '/home/postgres/tablespace/sshfs';
+\q
+create tablespace lab20nfs owner "user" location '/home/postgres/tablespace/nfs';
+create tablespace lab20iscsi owner "user" location '/home/postgres/tablespace/iscsi';
+/q
+\q
+select oid, spcname, usename from pg_tablespace join pg_user on usesysid = spcowner;
+create table s1(x int);
+alter table s1 tablespace lab20;
+alter table s1 set tablespace lab20;
+create table s2(y int) tablespace lab20nfs;
+create table s3(z int) tablespace lab20iscsi;
+select tablename, tableowner, tableplace from pg_tables where schemaname = 'public';
+select tablename, tableowner, tablespace from pg_tables where schemaname = 'public';
+\q
+\db+
+\dt
+\dt s1
+\l s1
+\d s1
+insert insto s1(x) values (select random() * 100 from generate_series(1, 1000));
+insert into s1(x) values (select random() * 100 from generate_series(1, 1000));
+insert into s1(x) select random() * 100 from generate_series(1, 1000);
+insert into s2(y) select random() * 100 from generate_series(1, 1000);
+insert into s2(y) select random() * 100 from generate_series(1, 1000);
+insert into s2(y) select random() * 100 from generate_series(1, 8000);
+insert into s3(z) select random() * 100 from generate_series(1, 20000);
+select * from s3 limit 200;
+\dt
+select relname, n_tup_ins from pg_stat_user_tables order by relname;
+\q
+q
+\q
+select spcname, pg_size_pretty(pg_tablespace_size(spcname)) from pg_tablespace order by spcname;
+\q
+\dx
+create extension oid2name;
+\q

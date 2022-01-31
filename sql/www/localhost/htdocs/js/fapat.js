@@ -10,35 +10,29 @@ function do_stuff()
 	let blk = document.getElementById('fio');
 	let table = document.getElementById('table');
 	table.style.display = "table";
-	let input = document.getElementsByTagName('input')[0];
-	let res = request('dt.php?param='+input.value);
+
+	let res = request('fapat.php');
 	
 	if(res != null && res.length != 0)
 	{
 		blk.innerHTML = "";
 	
-		let name = JSON.parse(res); // now you can easily transport complex data structured
+		let name = JSON.parse(res);
 		for (let i = 0; i < name.length; i++)
 		{
 			let tr = document.createElement('tr');
 
 			let td1 = document.createElement('td');
-			td1.append(name[i].fio);
-			tr.appendChild(td1);			
+			td1.append(name[i].col);
+			tr.appendChild(td1);
 
-			let td2 = document.createElement('td');
-			td2.append(name[i].role);
-			tr.appendChild(td2);
-
+			
 			blk.appendChild(tr);
-
-		}	
+		}
 	}
 	else
-		blk.innerHTML = '<span class="note">Failed!</span>';
+		blk.innerHTML = '<span class="note">FAILED!</span>';
 }
-
-
 
 function main()
 {
@@ -47,5 +41,13 @@ function main()
 	document.getElementById('table').style.display = 'none';
 }
 
-
 window.addEventListener('load', main, false);
+
+
+
+
+
+
+
+
+

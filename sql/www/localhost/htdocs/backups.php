@@ -12,15 +12,11 @@
 	
 	</div>
 	<div id="time"></div>
-	<form method="post" action="delete_bc.php">
+	<form method="post">
 		<div class="block" id="block-ls"></div>
-		<input type="submit" id="button-bl" value="Delete backup">
+		<input type="submit" onclick="this.form.action='/delete_bc.php'" id="button-bl" value="Delete backup">
+		<input type="submit" onclick="this.form.action='/restore.php'" id="button-bl" value="Restore backup">
 		<div class="block" id="block-log"></div>	
 	</form>	
-	<form method="post" action="restore.php">
-		<div class="block" id="block-ls"></div>
-		<input type="submit" id="button-rs" value="Restore backup">
-		<div class="block" id="block-log"></div>
-	</form>
 </body>
 </html>

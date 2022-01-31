@@ -9,17 +9,17 @@ OR
 process everything in PHP, and give out a full html page (or portion of it, that can be loaded inside one those div tags)
 */
 
-function request(url)
+async function request(url)
 {
 	let r = new XMLHttpRequest();
 	r.open('GET', url, false);
 	r.send();
 	return r.responseText;
 }
-function do_stuff()
+async function do_stuff()
 {
 	let blk = document.getElementById('block-ls');
-	let res = request('ls.php');
+	let res = await request('ls.php');
 	// assuming res is a JSON string
 	if(res != null)
 	{
@@ -50,8 +50,14 @@ function create_bc()
 	else
 		blk.innerHTML = '<span class="note">Faled!</span>'
 }
-
-
+function restore_bc()
+{
+	console.log('srestore');
+}
+function get_submit(form)
+{
+	console.log(form);
+}
 
 function main()
 {
@@ -59,7 +65,7 @@ function main()
 	btn.addEventListener('click',do_stuff,false);
 	var btn2 = document.getElementById('button-bc');
 	btn2.addEventListener('click',create_bc,false);
-	
+		
 }
 
 var timeElem = document.getElementById('time');

@@ -1,28 +1,31 @@
 <?php
-$param = $_GET['param'];
-
+$param1 = $_GET['god'];
 $host="172.16.0.1";
-$user="vid";
+$user="postgres";
 $pass="password";
-$db="videoteka";
+$db="family";
 $con=pg_connect("host=$host dbname=$db user=$user password=$pass")
 or die ("could not connect");
-$q="select * from selectap() where fio like '%$param%';";
+$q="select * from chet('$param1'::int);";
 $res=pg_query($con,$q);
-//$res = str_replace("select * from selectap() where fio like '%$param%';","",$res);
-//print_r($res);
+//print_r($q);
+//die();
 if(pg_num_rows($res))
 {
 	$data=array();
 	while($row=pg_fetch_array($res))
 	{
-		//$data[] = $row['fio'];
-		$data[] = ['fio'=>$row['fio'], 'role'=>$row['role']];
-	}	
+		$data[] = ['id'=>$row['id'], 
+		'name'=>$row['name'], 
+		'familia'=>$row['familia'], 
+		'othestvo'=>$row['othestvo'],
+		'god_r'=>$row['god_r']];
+	}
 	header('Content-Type: application/json; charset=utf-8');
-	//$data = array_slice($data, 0, -1);
+//$data = array_slice($data, 0, 0);
 	$data = str_replace("\\","",$data);
+        
 	$j = json_encode($data);
-	echo($j);
+echo($j);
 }
 

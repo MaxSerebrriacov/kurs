@@ -11,7 +11,8 @@ function do_stuff()
 	let table = document.getElementById('table');
 	table.style.display = "table";
 	let input = document.getElementsByTagName('input')[0];
-	let res = request('dt.php?param='+input.value);
+		 
+	let res = request('second.php?name='+input.value);
 	
 	if(res != null && res.length != 0)
 	{
@@ -21,17 +22,10 @@ function do_stuff()
 		for (let i = 0; i < name.length; i++)
 		{
 			let tr = document.createElement('tr');
-
 			let td1 = document.createElement('td');
 			td1.append(name[i].fio);
 			tr.appendChild(td1);			
-
-			let td2 = document.createElement('td');
-			td2.append(name[i].role);
-			tr.appendChild(td2);
-
 			blk.appendChild(tr);
-
 		}	
 	}
 	else

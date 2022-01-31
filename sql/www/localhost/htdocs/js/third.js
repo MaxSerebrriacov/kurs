@@ -11,7 +11,9 @@ function do_stuff()
 	let table = document.getElementById('table');
 	table.style.display = "table";
 	let input = document.getElementsByTagName('input')[0];
-	let res = request('dt.php?param='+input.value);
+	let input2 = document.getElementsByTagName('input')[1];
+	 
+	let res = request('third.php?name='+input.value+ '&' + 'year='+input2.value);
 	
 	if(res != null && res.length != 0)
 	{
@@ -23,11 +25,11 @@ function do_stuff()
 			let tr = document.createElement('tr');
 
 			let td1 = document.createElement('td');
-			td1.append(name[i].fio);
+			td1.append(name[i].name);
 			tr.appendChild(td1);			
 
 			let td2 = document.createElement('td');
-			td2.append(name[i].role);
+			td2.append(name[i].year_created);
 			tr.appendChild(td2);
 
 			blk.appendChild(tr);

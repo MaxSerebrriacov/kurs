@@ -1,0 +1,21 @@
+QUERY PLAN                              
+          
+--------------------------------------------------------------------------------
+----------
+ Nested Loop  (cost=14.66..22.77 rows=1 width=274)
+   ->  GroupAggregate  (cost=14.51..14.53 rows=1 width=4)
+         Group Key: v.prodeccer_id
+         Filter: (count(v.author_id) > 1)
+         InitPlan 1 (returns $0)
+           ->  Limit  (cost=0.00..13.25 rows=1 width=4)
+                 ->  Seq Scan on authors a  (cost=0.00..13.25 rows=1 width=4)
+                       Filter: ((fio)::text = 'Roman Hy Kombat'::text)
+         ->  Sort  (cost=1.26..1.26 rows=1 width=8)
+               Sort Key: v.prodeccer_id
+               ->  Seq Scan on videotape v  (cost=0.00..1.25 rows=1 width=8)
+                     Filter: (author_id = $0)
+   ->  Index Scan using producers_pkey on producers p  (cost=0.15..8.17 rows=1 w
+idth=278)
+         Index Cond: (id = v.prodeccer_id)
+(14 rows)
+

@@ -1,0 +1,8 @@
+ QUERY PLAN                               
+------------------------------------------------------------------------
+ Seq Scan on videotape v  (cost=13.25..14.65 rows=1 width=536)
+   Filter: ((prodeccer_id = $0) AND ((year_created)::integer > 2000))
+   InitPlan 1 (returns $0)
+     ->  Limit  (cost=0.00..13.25 rows=1 width=4)
+           ->  Seq Scan on producers  (cost=0.00..13.25 rows=1 width=4)
+                 Filter: ((fio)::text = 'Helga Dola Artemovna'::text)

@@ -1,0 +1,19 @@
+QUERY PLAN                             
+           
+-------------------------------------------------------------------------------
+-----------
+ Nested Loop  (cost=19.57..20.29 rows=1 width=536)
+   ->  HashAggregate  (cost=19.43..19.44 rows=1 width=4)
+         Group Key: vp.videotape_id
+         ->  Hash Join  (cost=14.39..19.43 rows=1 width=4)
+               Hash Cond: (vp.premie_id = p.id)
+               ->  Seq Scan on videotape_premies vp  (cost=0.00..4.40 rows=240 
+width=8)
+               ->  Hash  (cost=14.38..14.38 rows=1 width=4)
+                     ->  Seq Scan on premies p  (cost=0.00..14.38 rows=1 width=
+4)
+                           Filter: ((year_completed)::integer = 2002)
+   ->  Index Scan using videotape_pkey on videotape v  (cost=0.14..0.79 rows=1 
+width=540)
+         Index Cond: (id = vp.videotape_id)
+
